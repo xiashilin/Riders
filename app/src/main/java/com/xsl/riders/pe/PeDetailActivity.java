@@ -139,13 +139,13 @@ public class PeDetailActivity extends BaseActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    @OnClick({R.id.detail_call, R.id.detail_chat})
+    @OnClick({R.id.tv_chat, R.id.tv_call})
     private void onClick(View view) {
         switch (view.getId()) {
-            case R.id.detail_call:
+            case R.id.tv_call:
                 callPhone(phoneNum);
                 break;
-            case R.id.detail_chat:
+            case R.id.tv_chat:
                 SnackBarUtils.show(PeDetailActivity.this, "暂未开发");
                 break;
         }
