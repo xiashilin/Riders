@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#eee">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="6dp"
+        android:orientation="vertical">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/gv_four"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/white" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:text="专项知识"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/white"
+            android:orientation="vertical">
+
+            <com.xsl.riders.widget.SettingItemView
+                android:id="@+id/item_key"
+                style="@style/settingStyle"
+                app:leftIcon="@mipmap/textimg1"
+                app:leftText="@string/gnaj"
+                app:rightText="爱车,先从了解他开始" />
+
+            <com.xsl.riders.widget.SettingItemView
+                android:id="@+id/item_dashboard"
+                style="@style/settingStyle"
+                app:leftIcon="@mipmap/textimg4"
+                app:leftText="@string/qcybp"
+                app:rightText="行车状态不容忽视" />
+
+            <com.xsl.riders.widget.SettingItemView
+                android:id="@+id/item_points"
+                style="@style/settingStyle"
+                app:leftIcon="@mipmap/img_jiaogui"
+                app:leftText="@string/jtkf"
+                app:rightText="扣分事项一目了然" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

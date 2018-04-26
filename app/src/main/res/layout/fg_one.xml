@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#eee">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="6dp"
+        android:orientation="vertical">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/gridView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/white" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:text="专项知识"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/white"
+            android:orientation="vertical">
+
+            <com.xsl.riders.widget.SettingItemView
+                android:id="@+id/item_vision"
+                style="@style/settingStyle"
+                app:leftIcon="@mipmap/icon_sjcs"
+                app:leftText="@string/sjcs"
+                app:rightText="红灯停,绿灯行" />
+
+            <com.xsl.riders.widget.SettingItemView
+                android:id="@+id/item_sign"
+                style="@style/settingStyle"
+                app:leftIcon="@mipmap/icon_jtbz"
+                app:leftText="@string/jtbz"
+                app:rightText="经典易错标志一目了然" />
+
+            <com.xsl.riders.widget.SettingItemView
+                android:id="@+id/item_gesture"
+                style="@style/settingStyle"
+                app:leftIcon="@mipmap/icon_jjss"
+                app:leftText="@string/jjss"
+                app:rightText="有交警看手势" />
+        </LinearLayout>
+
+    </LinearLayout>
+</LinearLayout>

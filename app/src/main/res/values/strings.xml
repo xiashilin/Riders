@@ -1,0 +1,48 @@
+<resources>
+    <string name="app_name">车友帮</string>
+    <string name="title_home">首页</string>
+    <string name="title_pe">私教</string>
+    <string name="title_study">学习</string>
+    <string name="title_me">我的</string>
+    <string name="sjcs">视觉测试</string>
+    <string name="jtbz">交通标志</string>
+    <string name="jjss">交警手势</string>
+    <string name="zsbz">指示标志</string>
+    <string name="jlbz">禁令标志</string>
+    <string name="jgbz">警告标志</string>
+    <string name="fzbz">辅助标志</string>
+    <string name="zlbz">指路标志</string>
+    <string name="dljtbx">道路交通标线</string>
+    <string name="dlsgbx">道路施工标线</string>
+    <string name="lybz">旅游标志</string>
+    <string name="gnaj">车内功能按键</string>
+    <string name="qcybp">汽车仪表盘</string>
+    <string name="jtkf">交通扣分须知</string>
+    <string name="next">下一题</string>
+    <string name="pre">上一题</string>
+
+    <!--Loading-->
+    <string name="load_msg">正在加载中&#8230;</string>
+    <string name="load_update">正在修改中&#8230;</string>
+    <string name="load_delete">正在删除中&#8230;</string>
+    <string name="load_send_code">正在发送验证码&#8230;</string>
+    <string name="load_verify">正在验证中&#8230;</string>
+    <string name="load_switch">正在切换中&#8230;</string>
+    <string name="load_login">正在登录中&#8230;</string>
+    <string name="load_sign">正在注册中&#8230;</string>
+    <string name="get_code">获取验证码</string>
+    <string name="reset_get">重新获取</string>
+    <string name="verify_phone">验证手机号</string>
+    <string name="verify">验证</string>
+
+    <string name="username">用户名</string>
+    <string name="sex">性别</string>
+    <string name="age">年龄</string>
+    <string name="phone">电话</string>
+    <string name="email">邮箱</string>
+    <string name="man">男</string>
+    <string name="woman">女</string>
+    <string name="not_set">未设置</string>
+    <string name="year">岁</string>
+    <string name="setting">设置</string>
+</resources>

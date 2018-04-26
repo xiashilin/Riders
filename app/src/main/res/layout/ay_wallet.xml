@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:titleTextColor="@android:color/white" />
+
+    </android.support.design.widget.AppBarLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginLeft="20dp"
+            android:src="@mipmap/balance_image" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="20dp"
+            android:text="余额:"
+            android:textSize="20sp" />
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="￥0"
+        android:textColor="@android:color/holo_orange_dark"
+        android:textSize="30sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/textview_border"
+        android:text="余额说明" />
+
+    <Button
+        android:id="@+id/recharge"
+        style="@style/Button.Default"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:text="充值" />
+
+    <com.xsl.riders.widget.SettingItemView
+        android:id="@+id/item_hours"
+        style="@style/settingStyle"
+        android:layout_marginTop="20dp"
+        android:background="@android:color/white"
+        app:isShowRightText="false"
+        app:leftIcon="@mipmap/re_hour_image"
+        app:leftText="剩余学时" />
+
+    <com.xsl.riders.widget.SettingItemView
+        android:id="@+id/item_payment"
+        style="@style/settingStyle"
+        android:background="@android:color/white"
+        app:isShowRightText="false"
+        app:leftIcon="@mipmap/pay_mingxi_img"
+        app:leftText="支付明细" />
+
+    <com.xsl.riders.widget.SettingItemView
+        android:id="@+id/item_coupon"
+        style="@style/settingStyle"
+        android:background="@android:color/white"
+        app:isShowRightText="false"
+        app:leftIcon="@mipmap/my_coupon_image"
+        app:leftText="优惠券" />
+</LinearLayout>

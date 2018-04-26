@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:titleTextColor="@android:color/white" />
+
+    </android.support.design.widget.AppBarLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:orientation="vertical">
+
+        <com.xsl.riders.widget.SettingItemView
+            android:id="@+id/item_one"
+            style="@style/settingStyle"
+            app:isShowRightText="false"
+            app:leftText="@string/zsbz" />
+
+        <com.xsl.riders.widget.SettingItemView
+            android:id="@+id/item_two"
+            style="@style/settingStyle"
+            app:isShowRightText="false"
+            app:leftText="@string/jlbz" />
+
+        <com.xsl.riders.widget.SettingItemView
+            android:id="@+id/item_three"
+            style="@style/settingStyle"
+            app:isShowRightText="false"
+            app:leftText="@string/jgbz" />
+
+        <com.xsl.riders.widget.SettingItemView
+            android:id="@+id/item_four"
+            style="@style/settingStyle"
+            app:isShowRightText="false"
+            app:leftText="@string/fzbz" />
+
+        <com.xsl.riders.widget.SettingItemView
+            android:id="@+id/item_five"
+            style="@style/settingStyle"
+            app:isShowRightText="false"
+            app:leftText="@string/zlbz" />
+
+        <com.xsl.riders.widget.SettingItemView
+            android:id="@+id/item_six"
+            style="@style/settingStyle"
+            app:isShowRightText="false"
+            app:leftText="@string/dljtbx" />
+
+        <com.xsl.riders.widget.SettingItemView
+            android:id="@+id/item_seven"
+            style="@style/settingStyle"
+            app:isShowRightText="false"
+            app:leftText="@string/dlsgbx" />
+
+        <com.xsl.riders.widget.SettingItemView
+            android:id="@+id/item_eight"
+            style="@style/settingStyle"
+            app:isShowRightText="false"
+            app:leftText="@string/lybz" />
+    </LinearLayout>
+</LinearLayout>
