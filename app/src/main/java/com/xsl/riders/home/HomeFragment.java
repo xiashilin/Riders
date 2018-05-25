@@ -43,9 +43,9 @@ public class HomeFragment extends BaseFragment {
     @Override
     public void initData() {
         List<String> images = new ArrayList<>();
-        images.add("http://ac-v4ch3w9s.clouddn.com/ade8807c4db769508d5b.png");
-        images.add("http://ac-v4ch3w9s.clouddn.com/5ce899e584f57b71bd89.png");
-        images.add("http://ac-v4ch3w9s.clouddn.com/b17332b7206d2e6e6b9a.png");
+        images.add("http://lc-3xagb7rq.cn-n1.lcfile.com/eb5607bbe45a02475f0b.png");
+        images.add("http://lc-3xagb7rq.cn-n1.lcfile.com/f71520fd6acb3e421cda.png");
+        images.add("http://lc-3xagb7rq.cn-n1.lcfile.com/f631953f3958c51007d8.png");
         banner.setImages(images).setImageLoader(new PicassoImageLoader()).start();
     }
 

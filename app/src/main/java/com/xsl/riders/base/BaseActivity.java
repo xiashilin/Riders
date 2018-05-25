@@ -132,10 +132,10 @@ public abstract class BaseActivity extends AppCompatActivity {
         dialog = new AlertDialog.Builder(this)
                 .setTitle("存储权限不可用")
                 .setMessage("请在-应用设置-权限-中，允许支付宝使用存储权限来保存用户数据")
-                .setPositiveButton("立即开启", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        // 跳转到应用设置界面
+                                .setPositiveButton("立即开启", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        // 跳转到应用设置界面
                         goToAppSetting();
                     }
                 })

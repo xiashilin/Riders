@@ -39,10 +39,12 @@
         <activity android:name=".me.UserInfoActivity" />
         <activity android:name=".home.InviteActivity" />
         <activity android:name=".home.PeActivity" />
-        <activity android:name=".me.FriendCircleActivity"/>
+        <activity android:name=".me.FriendCircleActivity" />
         <activity
             android:name=".home.SignUpActivity"
             android:configChanges="orientation|keyboardHidden"
             android:windowSoftInputMode="adjustUnspecified|stateHidden" />
+        <activity android:name=".me.FeedBackActivity" />
+        <activity android:name=".me.CollectActivity" />
     </application>
 </manifest>

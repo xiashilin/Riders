@@ -54,7 +54,8 @@ public class MeFragment extends BaseFragment implements SettingItemView.OnSettin
     private SettingItemView mItemCircle;
     @ViewById(R.id.item_collection)
     private SettingItemView mItemCollection;
-
+    @ViewById(R.id.item_feedback)
+    private SettingItemView mItemFeedBack;
     @Override
     protected int getLayoutRes() {
 
@@ -69,6 +70,7 @@ public class MeFragment extends BaseFragment implements SettingItemView.OnSettin
         mItemMoney.setOnSettingItemClick(this);
         mItemCircle.setOnSettingItemClick(this);
         mItemCollection.setOnSettingItemClick(this);
+        mItemFeedBack.setOnSettingItemClick(this);
     }
 
     @Override
@@ -116,7 +118,10 @@ public class MeFragment extends BaseFragment implements SettingItemView.OnSettin
                     goActivity(getContext(), FriendCircleActivity.class);
                     break;
                 case R.id.item_collection:
-                    SnackBarUtils.show(getContext(), "暂未开发");
+                    goActivity(getContext(), CollectActivity.class);
+                    break;
+                case R.id.item_feedback:
+                    goActivity(getContext(), FeedBackActivity.class);
                     break;
             }
 

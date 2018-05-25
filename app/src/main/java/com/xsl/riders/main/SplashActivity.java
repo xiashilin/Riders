@@ -69,37 +69,37 @@ public class SplashActivity extends AppCompatActivity {
 
     private void initLaunchLogo() {
         guideImage.setVisibility(View.VISIBLE);
-        AnimationSet animationSet = new AnimationSet(false);
-        // 旋转动画 从0到360 以中心旋转
-        RotateAnimation rotateAnim = new RotateAnimation(0, 360, Animation.RELATIVE_TO_SELF, 0.5f,
-                Animation.RELATIVE_TO_SELF, 0.5f);
-
-        rotateAnim.setDuration(1000);
-
-        rotateAnim.setFillAfter(true);// 设置动画执行完毕后，控件停留在结束的状态
-
-        // 缩放动画 0~1 从无到有 基于中心缩放
-
-        ScaleAnimation scaleAnim = new ScaleAnimation(0, 1, 0, 1, Animation.RELATIVE_TO_SELF, 0.5f,
-                Animation.RELATIVE_TO_SELF, 0.5f);
-
-        scaleAnim.setDuration(1000);
-
-        scaleAnim.setFillAfter(true);
-
-        // 渐变动画 0~1 从没有到完全显示
-
-        AlphaAnimation alphaAnim = new AlphaAnimation(0, 1);
-
-        alphaAnim.setDuration(2000);
-
-        alphaAnim.setFillAfter(true);
-
-        // 添加动画到集合
-        animationSet.addAnimation(rotateAnim);
-        animationSet.addAnimation(scaleAnim);
-        animationSet.addAnimation(alphaAnim);
-        guideImage.startAnimation(animationSet);
+//        AnimationSet animationSet = new AnimationSet(false);
+//        // 旋转动画 从0到360 以中心旋转
+//        RotateAnimation rotateAnim = new RotateAnimation(0, 360, Animation.RELATIVE_TO_SELF, 0.5f,
+//                Animation.RELATIVE_TO_SELF, 0.5f);
+//
+//        rotateAnim.setDuration(1000);
+//
+//        rotateAnim.setFillAfter(true);// 设置动画执行完毕后，控件停留在结束的状态
+//
+//        // 缩放动画 0~1 从无到有 基于中心缩放
+//
+//        ScaleAnimation scaleAnim = new ScaleAnimation(0, 1, 0, 1, Animation.RELATIVE_TO_SELF, 0.5f,
+//                Animation.RELATIVE_TO_SELF, 0.5f);
+//
+//        scaleAnim.setDuration(1000);
+//
+//        scaleAnim.setFillAfter(true);
+//
+//        // 渐变动画 0~1 从没有到完全显示
+//
+//        AlphaAnimation alphaAnim = new AlphaAnimation(0, 1);
+//
+//        alphaAnim.setDuration(2000);
+//
+//        alphaAnim.setFillAfter(true);
+//
+//        // 添加动画到集合
+//        animationSet.addAnimation(rotateAnim);
+//        animationSet.addAnimation(scaleAnim);
+//        animationSet.addAnimation(alphaAnim);
+//        guideImage.startAnimation(animationSet);
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {

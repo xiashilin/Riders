@@ -67,7 +67,7 @@ public class FriendCircleActivity extends TimelineViewController {
     }
 
     private void setHeader() {
-        String coverUrl = "http://ac-c8h5pfqx.clouddn.com/b32e9a24b756a4337551.jpg";
+        String coverUrl = "http://lc-3xagb7rq.cn-n1.lcfile.com/4e3083c3967609329673.jfif";
         setCover(coverUrl);
 
         String userAvatarUrl = String.format("http://img4.imgtn.bdimg.com/it/u=1373411777,3992091759&fm=27&gp=0.jpg", userAvatarSize, userAvatarSize);
@@ -97,24 +97,24 @@ public class FriendCircleActivity extends TimelineViewController {
         textImageItem.title = "";
         textImageItem.text = "你是我的小苹果 小苹果 我爱你 就像老鼠爱大米 18680551720 [亲亲]";
 
-        textImageItem.srcImages.add("http://ac-c8h5pfqx.clouddn.com/80247214fe46e3412569.png");
-        textImageItem.srcImages.add("http://ac-c8h5pfqx.clouddn.com/80247214fe46e3412569.png");
-        textImageItem.srcImages.add("http://ac-c8h5pfqx.clouddn.com/80247214fe46e3412569.png");
-        textImageItem.srcImages.add("http://ac-c8h5pfqx.clouddn.com/80247214fe46e3412569.png");
-        textImageItem.srcImages.add("http://ac-c8h5pfqx.clouddn.com/80247214fe46e3412569.png");
-        textImageItem.srcImages.add("http://ac-c8h5pfqx.clouddn.com/80247214fe46e3412569.png");
-        textImageItem.srcImages.add("http://ac-c8h5pfqx.clouddn.com/80247214fe46e3412569.png");
-        textImageItem.srcImages.add("http://ac-c8h5pfqx.clouddn.com/80247214fe46e3412569.png");
+        textImageItem.srcImages.add("http://lc-3xagb7rq.cn-n1.lcfile.com/b5edd31b0d5f46524072.jpg");
+        textImageItem.srcImages.add("http://lc-3xagb7rq.cn-n1.lcfile.com/b5edd31b0d5f46524072.jpg");
+        textImageItem.srcImages.add("http://lc-3xagb7rq.cn-n1.lcfile.com/b5edd31b0d5f46524072.jpg");
+        textImageItem.srcImages.add("http://lc-3xagb7rq.cn-n1.lcfile.com/b5edd31b0d5f46524072.jpg");
+        textImageItem.srcImages.add("http://lc-3xagb7rq.cn-n1.lcfile.com/b5edd31b0d5f46524072.jpg");
+        textImageItem.srcImages.add("http://lc-3xagb7rq.cn-n1.lcfile.com/b5edd31b0d5f46524072.jpg");
+        textImageItem.srcImages.add("http://lc-3xagb7rq.cn-n1.lcfile.com/b5edd31b0d5f46524072.jpg");
+        textImageItem.srcImages.add("http://lc-3xagb7rq.cn-n1.lcfile.com/b5edd31b0d5f46524072.jpg");
 
 
-        textImageItem.thumbImages.add("http://ac-c8h5pfqx.clouddn.com/80247214fe46e3412569.png");
-        textImageItem.thumbImages.add("http://ac-c8h5pfqx.clouddn.com/80247214fe46e3412569.png");
-        textImageItem.thumbImages.add("http://ac-c8h5pfqx.clouddn.com/80247214fe46e3412569.png");
-        textImageItem.thumbImages.add("http://ac-c8h5pfqx.clouddn.com/80247214fe46e3412569.png");
-        textImageItem.thumbImages.add("http://ac-c8h5pfqx.clouddn.com/80247214fe46e3412569.png");
-        textImageItem.thumbImages.add("http://ac-c8h5pfqx.clouddn.com/80247214fe46e3412569.png");
-        textImageItem.thumbImages.add("http://ac-c8h5pfqx.clouddn.com/80247214fe46e3412569.png");
-        textImageItem.thumbImages.add("http://ac-c8h5pfqx.clouddn.com/80247214fe46e3412569.png");
+        textImageItem.srcImages.add("http://lc-3xagb7rq.cn-n1.lcfile.com/b5edd31b0d5f46524072.jpg");
+        textImageItem.srcImages.add("http://lc-3xagb7rq.cn-n1.lcfile.com/b5edd31b0d5f46524072.jpg");
+        textImageItem.srcImages.add("http://lc-3xagb7rq.cn-n1.lcfile.com/b5edd31b0d5f46524072.jpg");
+        textImageItem.srcImages.add("http://lc-3xagb7rq.cn-n1.lcfile.com/b5edd31b0d5f46524072.jpg");
+        textImageItem.srcImages.add("http://lc-3xagb7rq.cn-n1.lcfile.com/b5edd31b0d5f46524072.jpg");
+        textImageItem.srcImages.add("http://lc-3xagb7rq.cn-n1.lcfile.com/b5edd31b0d5f46524072.jpg");
+        textImageItem.srcImages.add("http://lc-3xagb7rq.cn-n1.lcfile.com/b5edd31b0d5f46524072.jpg");
+        textImageItem.srcImages.add("http://lc-3xagb7rq.cn-n1.lcfile.com/b5edd31b0d5f46524072.jpg");
         ;
 
         textImageItem.location = "中国 • 广州";
