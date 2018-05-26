@@ -53,7 +53,7 @@ public class HomeFragment extends BaseFragment {
     private void click(View view) {
         switch (view.getId()) {
             case R.id.ll_place:
-                SnackBarUtils.show(getActivity(), "暂未开发");
+                goActivity(getContext(), SchoolActivity.class);
                 break;
             case R.id.ll_private_signUp:
                 if (checkLogin()) {
@@ -61,7 +61,7 @@ public class HomeFragment extends BaseFragment {
                 }
                 break;
             case R.id.ll_peiLian:
-                goActivity(getContext(),PeActivity.class);
+                goActivity(getContext(), PeActivity.class);
                 break;
             case R.id.ll_invite:
                 if (checkLogin()) {

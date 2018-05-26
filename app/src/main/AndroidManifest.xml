@@ -46,5 +46,6 @@
             android:windowSoftInputMode="adjustUnspecified|stateHidden" />
         <activity android:name=".me.FeedBackActivity" />
         <activity android:name=".me.CollectActivity" />
+        <activity android:name=".home.SchoolActivity"/>
     </application>
 </manifest>
