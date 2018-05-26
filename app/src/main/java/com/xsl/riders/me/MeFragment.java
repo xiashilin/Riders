@@ -2,29 +2,23 @@ package com.xsl.riders.me;
 
 import android.content.Intent;
 import android.os.Environment;
-import android.support.v7.widget.Toolbar;
-import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.avos.avoscloud.AVUser;
 import com.squareup.picasso.Picasso;
 import com.xsl.riders.R;
 import com.xsl.riders.base.BaseFragment;
 import com.xsl.riders.common.UserBean;
-import com.xsl.riders.main.login.LoginActivity;
-import com.xsl.riders.utils.PicassoImageLoader;
+import com.xsl.riders.main.LoginActivity;
 import com.xsl.riders.utils.SharedPUtils;
-import com.xsl.riders.utils.SnackBarUtils;
 import com.xsl.riders.utils.ToastUtils;
 import com.xsl.riders.utils.ioc.OnClick;
 import com.xsl.riders.utils.ioc.ViewById;
 import com.xsl.riders.widget.SettingItemView;
 
 import java.io.File;
-
-import static android.app.Activity.RESULT_OK;
 
 /**
  * Email:1479714932@qq.com
@@ -56,6 +50,7 @@ public class MeFragment extends BaseFragment implements SettingItemView.OnSettin
     private SettingItemView mItemCollection;
     @ViewById(R.id.item_feedback)
     private SettingItemView mItemFeedBack;
+
     @Override
     protected int getLayoutRes() {
 
@@ -80,20 +75,14 @@ public class MeFragment extends BaseFragment implements SettingItemView.OnSettin
     }
 
     private void initUserData() {
-        UserBean userBean = SharedPUtils.getCurrentUser(getContext());
-        if (checkLogin()) {
-            //加载当前头像
-            String imgPath = Environment.getExternalStorageDirectory().getAbsolutePath()
-                    + "/" + userBean.getImage();
-            File file = new File(imgPath);
-            if (file.exists()) {
-                //加载图片
-                Picasso.with(getContext()).load(file).into(mUserIcon);
-
-            }
-            mUserName.setText(userBean.getUsername());
-            mUserPhone.setText(userBean.getPhone());
+        if (AVUser.getCurrentUser() != null) {
+            mUserName.setText(AVUser.getCurrentUser().getUsername());
+            Picasso.with(getContext()).load(AVUser.getCurrentUser().getAVFile("image") == null ? "www" : AVUser.getCurrentUser().getAVFile("image").getUrl()).into(mUserIcon);
+        } else {
+            mUserName.setText("点击登录");
+            Picasso.with(getContext()).load(R.mipmap.ic_def_icon).into(mUserIcon);
         }
+
     }
 
     @Override
@@ -133,13 +122,19 @@ public class MeFragment extends BaseFragment implements SettingItemView.OnSettin
 
     @OnClick(R.id.user_info)
     private void click() {
-        if (checkLogin())
+        if (checkLogin()) {
             goActivity(getContext(), UserInfoActivity.class);
+        } else
+
+        {
+            ToastUtils.show(getContext(), "请登录...");
+            this.startActivityForResult(new Intent(getContext(), LoginActivity.class), getActivity().RESULT_FIRST_USER);
+        }
+
     }
 
-    private boolean checkLogin() {
-        boolean isLogin = (boolean) SharedPUtils.get(getContext(), "login", false);
-        if (isLogin) {
+    protected boolean checkLogin() {
+        if (AVUser.getCurrentUser() != null) {
             return true;
         }
 

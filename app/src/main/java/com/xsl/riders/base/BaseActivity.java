@@ -21,6 +21,7 @@ import android.view.MenuItem;
 import android.view.Window;
 import android.widget.Toast;
 
+import com.avos.avoscloud.AVUser;
 import com.xsl.riders.common.UserBean;
 import com.xsl.riders.utils.ActivityManagerUtil;
 import com.xsl.riders.utils.SharedPUtils;
@@ -74,6 +75,8 @@ public abstract class BaseActivity extends AppCompatActivity {
         initEventAndData();
 
         ActivityManagerUtil.mActivities.add(this);
+
+        ViewUtils.inject(this);
     }
 
 
@@ -132,10 +135,10 @@ public abstract class BaseActivity extends AppCompatActivity {
         dialog = new AlertDialog.Builder(this)
                 .setTitle("存储权限不可用")
                 .setMessage("请在-应用设置-权限-中，允许支付宝使用存储权限来保存用户数据")
-                                .setPositiveButton("立即开启", new DialogInterface.OnClickListener() {
-                                    @Override
-                                    public void onClick(DialogInterface dialog, int which) {
-                                        // 跳转到应用设置界面
+                .setPositiveButton("立即开启", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        // 跳转到应用设置界面
                         goToAppSetting();
                     }
                 })
@@ -208,8 +211,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
     protected boolean checkLogin() {
-        boolean isLogin = (boolean) SharedPUtils.get(this, "login", false);
-        if (isLogin) {
+        if (AVUser.getCurrentUser() != null) {
             return true;
         }
 

@@ -7,18 +7,7 @@
     android:orientation="vertical">
 
 
-    <android.support.design.widget.AppBarLayout
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize">
-
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
-            app:titleTextColor="@android:color/white" />
-
-    </android.support.design.widget.AppBarLayout>
+    <include layout="@layout/toolbar" />
 
 
     <LinearLayout
@@ -60,9 +49,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:leftText="@string/username"
-            app:textColor="@android:color/black"
             app:rightText="Airsaid"
-            app:rightTextColor="#977F8A" />
+            app:rightTextColor="#977F8A"
+            app:textColor="@android:color/black" />
 
         <View style="@style/Divide.Default" />
 
@@ -71,9 +60,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:leftText="@string/sex"
-            app:textColor="@android:color/black"
             app:rightText="男"
-            app:rightTextColor="#977F8A" />
+            app:rightTextColor="#977F8A"
+            app:textColor="@android:color/black" />
 
         <View style="@style/Divide.Default" />
 
@@ -82,9 +71,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:leftText="@string/phone"
-            app:textColor="@android:color/black"
             app:rightText="18"
-            app:rightTextColor="#977F8A" />
+            app:rightTextColor="#977F8A"
+            app:textColor="@android:color/black" />
 
         <View style="@style/Divide.Default" />
 
@@ -93,9 +82,20 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:leftText="@string/email"
-            app:textColor="@android:color/black"
             app:rightText="18"
-            app:rightTextColor="#977F8A" />
+            app:rightTextColor="#977F8A"
+            app:textColor="@android:color/black" />
 
     </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_exist"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/rounded_button"
+        android:text="退出登录"
+        android:textColor="@color/white"
+        android:textSize="16sp" />
 </LinearLayout>

@@ -6,10 +6,9 @@ import android.view.View;
 
 import com.xsl.riders.R;
 import com.xsl.riders.base.BaseFragment;
-import com.xsl.riders.main.login.LoginActivity;
+import com.xsl.riders.main.LoginActivity;
 import com.xsl.riders.utils.PicassoImageLoader;
 import com.xsl.riders.utils.SharedPUtils;
-import com.xsl.riders.utils.SnackBarUtils;
 import com.xsl.riders.utils.ToastUtils;
 import com.xsl.riders.utils.ioc.OnClick;
 import com.xsl.riders.utils.ioc.ViewById;

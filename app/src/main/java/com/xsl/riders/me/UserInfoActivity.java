@@ -15,32 +15,24 @@ import android.support.v4.content.ContextCompat;
 import android.support.v4.content.FileProvider;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.Toolbar;
-import android.text.TextUtils;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
+import com.avos.avoscloud.AVUser;
 import com.squareup.picasso.Picasso;
 import com.xsl.riders.R;
 import com.xsl.riders.base.BaseActivity;
 import com.xsl.riders.common.Constant;
-import com.xsl.riders.common.UserBean;
-import com.xsl.riders.main.login.UserInfoPresenter;
-import com.xsl.riders.main.login.UserInfoPresenterImp;
-import com.xsl.riders.main.login.UserInfoView;
 import com.xsl.riders.utils.ImageUtils;
-import com.xsl.riders.utils.ProgressUtils;
 import com.xsl.riders.utils.SharedPUtils;
-import com.xsl.riders.utils.SnackBarUtils;
-import com.xsl.riders.utils.StringUtils;
-import com.xsl.riders.utils.ioc.CheckNet;
 import com.xsl.riders.utils.ioc.OnClick;
 import com.xsl.riders.utils.ioc.ViewById;
 import com.xsl.riders.utils.ioc.ViewUtils;
+import com.xsl.riders.utils.statusbar.StatusBarUtils;
 import com.xsl.riders.widget.SettingItemView;
 
 import java.io.File;
@@ -59,7 +51,7 @@ import okhttp3.Response;
  * Created by gy on 2017/12/24.
  * 用户信息管理中心
  */
-public class UserInfoActivity extends BaseActivity implements UserInfoView, SettingItemView.OnSettingItemClick {
+public class UserInfoActivity extends BaseActivity {
 
     @ViewById(R.id.toolbar)
     Toolbar toolbar;
@@ -76,7 +68,6 @@ public class UserInfoActivity extends BaseActivity implements UserInfoView, Sett
     @ViewById(R.id.email)
     SettingItemView emailCL;
 
-    private UserInfoPresenter presenter;
 
     //选择图片来源
     private AlertDialog iconDialog;
@@ -100,10 +91,9 @@ public class UserInfoActivity extends BaseActivity implements UserInfoView, Sett
 
     @Override
     protected void initEventAndData() {
-        ViewUtils.inject(this);
-
         //初始化Toolbar
-
+        ViewUtils.inject(this);
+        StatusBarUtils.setStatusBarColor(this, ContextCompat.getColor(this, R.color.colorPrimary));
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -113,67 +103,11 @@ public class UserInfoActivity extends BaseActivity implements UserInfoView, Sett
             @Override
             public void onClick(View v) {
                 //返回消息更新上个Activity数据
-                setResult(RESULT_OK, new Intent());
+                setResult(RESULT_OK);
                 finish();
             }
         });
-
-        if (currentUser != null) {
-            //加载到布局中
-            initData();
-            //加载当前头像
-            String imgPath = Environment.getExternalStorageDirectory().getAbsolutePath()
-                    + "/" + currentUser.getImage();
-            Log.i(TAG, imgPath);
-            File file = new File(imgPath);
-            if (file.exists()) {
-                //加载图片
-                Picasso.with(this).load(file).into(iconIv);
-
-            }
-        }
-
-        presenter = new UserInfoPresenterImp(this);
-        usernameCL.setOnSettingItemClick(this);
-        sexCL.setOnSettingItemClick(this);
-        phoneCL.setOnSettingItemClick(this);
-        emailCL.setOnSettingItemClick(this);
-    }
-
-    /**
-     * 将用户信息更新到布局中
-     */
-    private void initData() {
-        usernameCL.setLeftText("用户名:               " + currentUser.getUsername());
-        sexCL.setLeftText("性别:                      " + currentUser.getGender());
-        phoneCL.setLeftText("电话:            " + currentUser.getPhone());
-        emailCL.setLeftText("邮箱:            " + currentUser.getMail());
-    }
-
-    @Override
-    public void loadDataSuccess(UserBean tData) {
-        ProgressUtils.dismiss();
-        SharedPUtils.setCurrentUser(mContext, currentUser);
-    }
-
-    @Override
-    public void loadDataError(Throwable throwable) {
-        ProgressUtils.dismiss();
-        SnackBarUtils.show(mContext, "修改失败");
-    }
-
-    /**
-     * 更新用户数据
-     */
-    @CheckNet
-    public void doUpdate() {
-        if (currentUser == null)
-            return;
-
-        ProgressUtils.show(UserInfoActivity.this, "正在修改...");
-
-        presenter.update(currentUser.getId(), currentUser.getUsername(), currentUser.getGender()
-                , currentUser.getPhone(), currentUser.getMail());
+        refrashData();
 
     }
 
@@ -182,11 +116,17 @@ public class UserInfoActivity extends BaseActivity implements UserInfoView, Sett
      *
      * @param view
      */
-    @OnClick(R.id.rlt_update_icon)
+    @OnClick({R.id.rlt_update_icon, R.id.btn_exist})
     public void onViewClicked(final View view) {
         switch (view.getId()) {
             case R.id.rlt_update_icon:  //头像
                 showIconDialog();
+                break;
+            case R.id.btn_exist:
+                setResult(RESULT_OK);
+                AVUser.logOut();
+                finish();
+                System.exit(0);
                 break;
         }
     }
@@ -219,129 +159,6 @@ public class UserInfoActivity extends BaseActivity implements UserInfoView, Sett
         }
     }
 
-    /**
-     * 显示选择性别对话框
-     */
-    public void showGenderDialog() {
-        if (genderDialog == null) {
-            genderDialog = new AlertDialog.Builder(this).setItems(new String[]{"男", "女"},
-                    new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            switch (which) {
-                                case GENDER_MAN: // 男性
-                                    if (!TextUtils.isEmpty(currentUser.getGender())) {
-                                        if (currentUser.getGender().equals("F")) {
-                                            currentUser.setGender("M");
-                                            sexCL.setRightText(currentUser.getGender());
-                                            doUpdate();
-                                        }
-                                    } else {
-                                        currentUser.setGender("M");
-                                        sexCL.setRightText(currentUser.getGender());
-                                        doUpdate();
-                                    }
-                                    break;
-                                case GENDER_FEMALE: // 女性
-                                    if (!TextUtils.isEmpty(currentUser.getGender())) {
-                                        if (currentUser.getGender().equals("M")) {
-                                            currentUser.setGender("F");
-                                            sexCL.setRightText(currentUser.getGender());
-                                            doUpdate();
-                                        }
-                                    } else {
-                                        currentUser.setGender("F");
-                                        sexCL.setRightText(currentUser.getGender());
-                                        doUpdate();
-                                    }
-                                    break;
-                            }
-                        }
-                    }).create();
-        }
-        if (!genderDialog.isShowing()) {
-            genderDialog.show();
-        }
-    }
-
-    /**
-     * 显示更换电话对话框
-     */
-    public void showPhoneDialog() {
-        final EditText editText = new EditText(UserInfoActivity.this);
-        String phone = currentUser.getPhone();
-        if (phone != null) {
-            editText.setText(currentUser.getPhone());
-            //将光标移至文字末尾
-            editText.setSelection(currentUser.getPhone().length());
-        }
-        if (phoneDialog == null) {
-            phoneDialog = new AlertDialog.Builder(this)
-                    .setTitle("电话")
-                    .setView(editText)
-                    .setPositiveButton("确定", new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int which) {
-                            String input = editText.getText().toString();
-                            if (input.equals("")) {
-                                Toast.makeText(getApplicationContext(), "内容不能为空！" + input,
-                                        Toast.LENGTH_SHORT).show();
-                            } else {
-                                if (StringUtils.checkPhoneNumber(input)) {
-                                    currentUser.setPhone(input);
-                                    phoneCL.setRightText(input);
-                                    doUpdate();
-                                } else {
-                                    Toast.makeText(UserInfoActivity.this,
-                                            "请输入正确的电话号码", Toast.LENGTH_LONG).show();
-                                }
-                            }
-                        }
-                    })
-                    .setNegativeButton("取消", null)
-                    .create();
-        }
-        if (!phoneDialog.isShowing()) {
-            phoneDialog.show();
-        }
-    }
-
-    /**
-     * 显示更换邮箱对话框
-     */
-    public void showMailDialog() {
-        final EditText emailEditText = new EditText(UserInfoActivity.this);
-        emailEditText.setText(currentUser.getMail());
-        //将光标移至文字末尾
-        emailEditText.setSelection(currentUser.getMail().length());
-        if (emailDialog == null) {
-            emailDialog = new AlertDialog.Builder(this)
-                    .setTitle("邮箱")
-                    .setView(emailEditText)
-                    .setPositiveButton("确定", new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int which) {
-                            String input = emailEditText.getText().toString();
-                            if (input.equals("")) {
-                                Toast.makeText(getApplicationContext(), "内容不能为空！" + input,
-                                        Toast.LENGTH_SHORT).show();
-                            } else {
-                                if (StringUtils.checkEmail(input)) {
-                                    currentUser.setMail(input);
-                                    emailCL.setRightText(input);
-                                    doUpdate();
-                                } else {
-                                    Toast.makeText(UserInfoActivity.this,
-                                            "请输入正确的邮箱格式", Toast.LENGTH_LONG).show();
-                                }
-                            }
-                        }
-                    })
-                    .setNegativeButton("取消", null)
-                    .create();
-        }
-        if (!emailDialog.isShowing()) {
-            emailDialog.show();
-        }
-    }
 
     /**
      * 监听Activity返回结果
@@ -490,7 +307,6 @@ public class UserInfoActivity extends BaseActivity implements UserInfoView, Sett
 
                 @Override
                 public void onResponse(Call call, Response response) throws IOException {
-                    doUpdate();
                 }
             });
         }
@@ -515,24 +331,13 @@ public class UserInfoActivity extends BaseActivity implements UserInfoView, Sett
         }
     }
 
-    @CheckNet
-    @Override
-    public void click(View view, boolean isChecked) {
-        switch (view.getId()) {
-            case R.id.username:  //用户名
-                SnackBarUtils.show(mContext, "江湖人行不更名，坐不改姓！");
-                break;
-            case R.id.sex:  //性别
-                showGenderDialog();
-                break;
-            case R.id.phone:  //电话修改
-                showPhoneDialog();
-                break;
-            case R.id.email:  //邮箱修改
-                showMailDialog();
-                break;
-            default:
-                break;
+    private void refrashData() {
+        if (AVUser.getCurrentUser() != null) {
+            sexCL.setLeftText("性别:" + "男");
+            phoneCL.setLeftText("电话: " + AVUser.getCurrentUser().getMobilePhoneNumber());
+            emailCL.setLeftText("邮箱: " + AVUser.getCurrentUser().getEmail());
+            usernameCL.setLeftText("用户名:" + AVUser.getCurrentUser().getUsername());
+            Picasso.with(mContext).load(AVUser.getCurrentUser().getAVFile("image") == null ? "www" : AVUser.getCurrentUser().getAVFile("image").getUrl()).into(iconIv);
         }
     }
 }
